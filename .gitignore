@@ -1,0 +1,9 @@
+# Node modules
+node_modules
+
+# Environment
+.env
+
+# Misc
+dist
+yarn-error.log

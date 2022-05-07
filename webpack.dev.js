@@ -2,7 +2,7 @@ import { merge } from 'webpack-merge'
 
 import common from './webpack.common.js'
 
-const PORT = 8080
+const PORT = 8090
 
 const config = {
   mode: 'development',
@@ -12,7 +12,7 @@ const config = {
   devServer: {
     hot: true,
     historyApiFallback: true,
-    port: 8081,
+    port: 8083,
     host: 'localhost',
     client: {
       overlay: {

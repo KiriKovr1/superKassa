@@ -33,6 +33,25 @@ const config = {
           'css-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.woff(2)$/,
+        use: [
+          {
+            loader: 'file-loader'
+          }
+        ]
       }
     ]
   },

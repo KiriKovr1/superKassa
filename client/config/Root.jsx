@@ -1,18 +1,22 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
-import UserList from '../components/userList/userListPage.jsx'
+import store from '../redux/index'  
+
+import MainPage from '../components/mainPage'
 
 
 const Root = () => {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<UserList />}/>
-                <Route path="/test" element={<div> this is test</div>}/>
-                <Route path="*" element={<h3>404</h3>}/>
-            </Routes>
-        </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<MainPage />}/>
+                    <Route path="*" element={<h3>404</h3>}/>
+                </Routes>
+            </BrowserRouter>
+        </ Provider>
     )
 }
 

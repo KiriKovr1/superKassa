@@ -1,14 +1,10 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import './assets/styles/styles.scss'
 
 import Root from './config/Root'
 
-const target = document.getElementById('root')
-
-const render = (Component) => {
-    ReactDOM.render(<Component/>, target)
-}
-
-render(Root)
+const rootElement = document.getElementById('root')
+const root = createRoot(rootElement)
+root.render(<Root />)

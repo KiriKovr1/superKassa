@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "country": "Russia",
+        "code": "+7"
+    },
+    {
+        "id": 2,
+        "country": "Spain",
+        "code": "+34"
+    },
+    {
+        "id": 3,
+        "country": "Australia",
+        "code": "+61"
+    }
+]

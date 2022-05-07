@@ -1,0 +1,186 @@
+.input {
+    width: 100%;
+    margin-top: 3vh;
+    height: 6vh;
+    position: relative;
+    display: flex;
+    border-radius: $radius;
+    background-color: $white;
+    box-shadow: $inner-shadow;
+
+    input {
+        border: none;
+        background: none; 
+        outline: none;
+        margin: 0.5vw;
+        width: 47%;
+        color: $darkBlue;
+        font-family: 'gilroy-regular';
+        font-size: 1rem;
+    }
+}
+
+.input--notValid {
+    width: 100%;
+    height: 6vh;
+    margin-top: 3vh;
+    position: relative;
+    display: flex;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 110, 81);
+    border-radius: $radius;
+    background-color: $white;
+    box-shadow: $inner-shadow;
+
+    input {
+        border: none;
+        background: none; 
+        outline: none;
+        margin: 0.5vw;
+        width: 47%;
+        color: $darkBlue;
+        font-family: 'gilroy-regular';
+        font-size: 1rem;
+    }
+}
+
+.input__countryCodeButton {
+    width: 20%;
+    border-radius: $radius;
+    background-color: $blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    margin: 0.5vw;
+    border: none;
+    color: $lightBlue;
+
+    span {
+        width: 80%;
+        justify-content: space-between;
+        display: flex;
+    }
+
+    &:hover {
+        opacity: 0.5;
+        transition-duration: 250ms;
+    }
+}
+
+.countryCodeButton__arrow--directionRight{
+    width: 0.6vw;
+}
+
+.countryCodeButton__arrow--directionRight{
+    width: 0.6vw;
+    transition: transform .2s ease,-webkit-transform .2s ease;
+    transform: rotate3d(0,0,-1,-90deg);
+}
+
+.countryCodeButton__arrow--directionDown{
+    width: 0.6vw;
+    transition: transform .2s ease,-webkit-transform .2s ease;
+    transform: rotate3d(0,0,-1,0deg);
+}
+
+.countryCodeButton__text{
+    font-size: 1rem;
+    font-family: 'gilroy-medium';
+}
+
+.countryCodeButton__arrow{
+    width: 0.6vw;
+}
+
+.countryCodeSelection{
+    width: 50%;
+    padding: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $lightBlue;
+    border-radius: $radius;
+    box-shadow: $drop-shadow;
+    position: absolute;
+    top: 5.5vh;
+    left: 0.5vw;
+
+    .countryCodeSelection__title{
+        font-family: 'gilroy-medium';
+        font-size: 1.4rem;
+        margin: 0;
+        color: $darkBlue;
+    }
+
+    .countryCodeSelection__diviver{
+        width: 100%;
+        height: 1px;
+        margin: 1vh 0 1vh 0;
+        background-color: $darkBlue;
+        opacity: 0.1;
+    }
+
+    .countryCodeSelection__countryCode{
+        margin: 0;
+        width: 100%;
+        height: 5vh;
+        align-items: center;
+        padding: 1vw;
+        box-sizing: border-box;
+        border-radius: $radius;
+        justify-content: space-between;
+        display: flex;
+        color: $darkBlue;
+
+        p{
+            font-family: 'gilroy-regular';
+        }
+
+        &:hover{
+            background-color: $blue;
+            opacity: 0.8;
+            color: $lightBlue;
+            transition-duration: 100ms;
+        }
+    }
+}
+
+.input__SaveButton{
+    margin: 0.5vw;
+    width: 30%;
+    border: none;
+    border-radius: $radius;
+    background-color: $blue;
+    color: $lightBlue;
+    box-shadow: $buttonDark-shadow,$buttonLight-shadow;
+    font-family: 'gilroy-regular';
+}
+
+.input__SaveButton--disabled{
+    margin: 0.5vw;
+    width: 30%;
+    border: none;
+    border-radius: $radius;
+    background-color: rgb(186, 184, 184);
+    color: $lightBlue;
+    box-shadow: $buttonDark-shadow,$buttonLight-shadow;
+    font-family: 'gilroy-regular';
+}
+
+.validError{
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    margin-top: 3vh;
+    text-align: center;
+    font-family: 'gilroy-regular';
+    color: rgb(255, 110, 81);
+}
+
+.validError--hidden{
+    margin: 0;
+    padding: 0;
+    display: none;
+}

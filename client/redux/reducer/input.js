@@ -5,10 +5,12 @@ const UPDATECOUNTRYCODE = 'UPDATECOUNTRYCODE'
 const UPDATEPHONENUMBER = 'UPDATEPHONENUMBER'
 const SELECTIONVISIABILITY ='SELECTIONVISIABILITY'
 const SENDERROR = 'SENDERROR'
+const RESETINPUTVALUE = 'RESETINPUTVALUE'
 
 const initialState = {
     loaded: false,
     activeCode: '+7',
+    inputValue: '',
     phone: '',
     sendError: false, 
     valid: false ,
@@ -40,6 +42,7 @@ export default (state = initialState, action) => {
             const isErr = state.sendError ? !action.validData : false
             return {
                 ...state, 
+                inputValue: action.phone,
                 phone: state.activeCode + action.phone,
                 valid: action.validData,
                 sendError: isErr
@@ -50,6 +53,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 sendError: !isErr
+            }
+        }
+        case RESETINPUTVALUE: {
+            return  {
+                ...state,
+                inputValue: ''
             }
         }
         default:
@@ -63,6 +72,7 @@ export function getCodes(){
             .then(({data}) => {
                 dispatch({type: SETCODES, codes: data})
             })
+            .catch(err => console.log(err))
     }
 }
 
@@ -80,5 +90,9 @@ export function updatePhoneNumber (dataFromInput, validData){
 
 export function sendError (){
     return {type: SENDERROR}
+}
+
+export function resetInputValue(){
+    return {type: RESETINPUTVALUE}
 }
 

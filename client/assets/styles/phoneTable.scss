@@ -1,0 +1,71 @@
+.columnNames{
+    width: 100%;
+    height: 6vh;
+    margin: 2vh 0 2vh 0;
+    color: $lightBlue;
+    box-shadow: $drop-shadow;
+    border-radius: $radius;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .column{
+        width: 45%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p{
+            color: $darkBlue;
+            font-family: 'gilroy-medium';
+        }
+    }
+}
+
+.columnDivider{
+    position: relative;
+    width: 1px;
+    height: 60%;
+    background-color: $darkBlue;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.columns{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .phoneRow{
+        display: flex;
+        width: 100%;
+
+        div{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p{
+                font-family: 'gilroy-regular';
+            }
+
+            .phoneText{
+                color: $darkBlue;
+            }
+
+            .dateText{
+                color: $blue;
+            }
+        }
+    }
+}
+
+.emptyList{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'gilroy-regular';
+    font-size: 1.4rem;
+    color: $blue;
+}

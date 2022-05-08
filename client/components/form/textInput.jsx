@@ -1,5 +1,5 @@
-import React, {useState} from "react"
-import { useDispatch } from "react-redux"
+import React from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { updatePhoneNumber, sendError} from "../../redux/reducer/input"
 
 
@@ -11,18 +11,17 @@ const phoneValidation = (str) => {
 
 
 const TextInput = () => {
-    const [phonebody, setPhoneBody] = useState('') 
+    const inputValue = useSelector(s => s.input.inputValue)
     const dispatch = useDispatch()
     return (
         <input 
             type="text" 
-            value={phonebody}
+            value={inputValue}
             onBlur={() => {
                 dispatch(sendError())
             }}
             onChange={(e) => {
                 const value = e.target.value
-                setPhoneBody(value)
                 dispatch(updatePhoneNumber(value, phoneValidation(value)))
             }}
         />

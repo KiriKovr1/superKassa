@@ -4,22 +4,7 @@ import { updateSelectionVisiability } from '../../redux/reducer/input'
 import CountryCodeSelection from './countryCodeSelection'
 import arrow from '../../assets/icons/button-arrow.svg'
 import TextInput from './textInput'
-
-const SaveButton = (props) => {
-    let count = 0
-    return (
-        <button
-            disabled={props.dis}
-            className={props.dis ? 'input__SaveButton--disabled':'input__SaveButton'}
-            onClick={() => {
-                count += 1
-                console.log(count)
-            }}
-        >
-            {props.text}
-        </button>  
-    )
-}
+import SaveButton from './saveButton'
 
 const CountryCodeButton = (props) => {
     const dispatch = useDispatch()
@@ -53,7 +38,7 @@ const Input = () => {
         >
             <CountryCodeButton code={inputData.activeCode} active={inputData.isCountryCodeSelection}/> 
             <TextInput />
-            <SaveButton text='сохранить' dis={!inputData.valid}/>
+            <SaveButton text='сохранить' dis={!inputData.valid} phone={inputData.phone}/>
             {inputData.isCountryCodeSelection ? <CountryCodeSelection/> : undefined}
         </div>
     )

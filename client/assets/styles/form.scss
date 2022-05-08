@@ -106,6 +106,7 @@
     position: absolute;
     top: 5.5vh;
     left: 0.5vw;
+    z-index: 1;
 
     .countryCodeSelection__title{
         font-family: 'gilroy-medium';
@@ -134,7 +135,7 @@
         display: flex;
         color: $darkBlue;
 
-        p{
+        div{
             font-family: 'gilroy-regular';
         }
 

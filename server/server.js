@@ -3,9 +3,9 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import { resolve } from 'path'
 import countryCodeRouter from './routes/countyCode.router.js'
+import phonesRouter from './routes/phones.router.js'
 
 import { Html } from '../client/html.js'
-import { Server } from 'http'
 
 const server = express()
 const PORT = process.env.PORT || 8090
@@ -20,7 +20,8 @@ const middleware = [
 
 middleware.forEach((it) => server.use(it))
 
-server.use('/api', countryCodeRouter)
+server.use('/api', [countryCodeRouter, phonesRouter])
+
 
 server.get('/*', (req, res) => {
     const initialState = {

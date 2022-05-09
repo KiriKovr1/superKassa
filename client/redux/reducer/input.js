@@ -1,98 +1,103 @@
 import axios from "axios"
 
-const SETCODES = 'GETCODES'
-const UPDATECOUNTRYCODE = 'UPDATECOUNTRYCODE'
-const UPDATEPHONENUMBER = 'UPDATEPHONENUMBER'
-const SELECTIONVISIABILITY ='SELECTIONVISIABILITY'
-const SENDERROR = 'SENDERROR'
-const RESETINPUTVALUE = 'RESETINPUTVALUE'
+const SET_CODES = 'SET_CODES'
+const UPDATE_COUNTRY_CODE = 'UPDATE_COUNTRY_CODE'
+const UPDATE_PHONE_NUMBER = 'UPDATE_PHONE_NUMBER'
+const SELECTION_VISIABILITY = 'SELECTION_VISIABILITY'
+const SEND_ERROR = 'SEND_ERROR'
+const RESET_INPUT_VALUE = 'RESET_INPUT_VALUE'
 
 const initialState = {
     loaded: false,
     activeCode: '+7',
     inputValue: '',
     phone: '',
-    sendError: false, 
-    valid: false ,
-    isCountryCodeSelection: false
+    sendError: false,
+    valid: false,
+    isCountryCodeSelection: false,
+    serverError: false
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case SETCODES: {
+        case SET_CODES: {
             return {
-                ...state, 
+                ...state,
                 data: action.codes,
                 loaded: true
             }
-        } 
-        case UPDATECOUNTRYCODE: {
+        }
+        case UPDATE_COUNTRY_CODE: {
             return {
-                ...state, 
-                activeCode: action.code
+                ...state,
+                activeCode: action.code,
+                phone: action.code + state.inputValue
+
             }
         }
-        case SELECTIONVISIABILITY: {
+        case SELECTION_VISIABILITY: {
             return {
-                ...state, 
+                ...state,
                 isCountryCodeSelection: !state.isCountryCodeSelection
             }
         }
-        case UPDATEPHONENUMBER: {
+        case UPDATE_PHONE_NUMBER: {
             const isErr = state.sendError ? !action.validData : false
             return {
-                ...state, 
+                ...state,
                 inputValue: action.phone,
                 phone: state.activeCode + action.phone,
                 valid: action.validData,
                 sendError: isErr
             }
         }
-        case SENDERROR: {
+        case SEND_ERROR: {
             const isErr = state.valid
             return {
                 ...state,
                 sendError: !isErr
             }
         }
-        case RESETINPUTVALUE: {
-            return  {
+        case RESET_INPUT_VALUE: {
+            return {
                 ...state,
-                inputValue: ''
+                inputValue: '',
+                valid: false,
+                sendError: false
             }
         }
         default:
-        return state
+            return state
     }
 }
 
-export function getCodes(){
+export function getCodes() {
     return (dispatch) => {
         axios.get('/api/countryCodes')
             .then(({data}) => {
-                dispatch({type: SETCODES, codes: data})
+                dispatch({ type: SET_CODES, codes: data })
             })
             .catch(err => console.log(err))
     }
 }
 
-export function updateCountryCode (data){
-    return { type: UPDATECOUNTRYCODE, code: data } 
+export function updateCountryCode(data) {
+    return { type: UPDATE_COUNTRY_CODE, code: data }
 }
 
 export function updateSelectionVisiability() {
-    return { type: SELECTIONVISIABILITY}
+    return { type: SELECTION_VISIABILITY }
 }
 
-export function updatePhoneNumber (dataFromInput, validData){
-    return { type: UPDATEPHONENUMBER, phone: dataFromInput, validData }
+export function updatePhoneNumber(dataFromInput, validData) {
+    return { type: UPDATE_PHONE_NUMBER, phone: dataFromInput, validData }
 }
 
-export function sendError (){
-    return {type: SENDERROR}
+export function sendError() {
+    return { type: SEND_ERROR }
 }
 
-export function resetInputValue(){
-    return {type: RESETINPUTVALUE}
+export function resetInputValue() {
+    return { type: RESET_INPUT_VALUE }
 }
 

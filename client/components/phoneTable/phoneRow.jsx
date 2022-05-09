@@ -1,25 +1,18 @@
-import React , {useState}from 'react'
-import {CopyToClipboard} from 'react-copy-to-clipboard';
-
+import React from "react";
+import DeleteRowButton from "./deleteRowButton";
 
 const PhoneRow = (props) => {
-    return (
-        <CopyToClipboard text={props.phone}>
-            <div 
-                className='phoneRow'
-                onMouseOver={() => {
+  return (
+      <div className="phoneRow" >
+        <div>
+          <p className="phoneText">{props.phone}</p>
+        </div>
+        <div>
+          <p className="dateText">{props.date}</p>
+        </div>
+        <DeleteRowButton id={props.id} />
+      </div>
+  );
+};
 
-                }}
-            >
-                <div>
-                    <p className='phoneText'>{props.phone}</p>
-                </div>
-                <div>
-                    <p className='dateText'>{props.date}</p>
-                </div>
-            </div>
-        </CopyToClipboard>
-    )
-}
-
-export default PhoneRow
+export default PhoneRow;

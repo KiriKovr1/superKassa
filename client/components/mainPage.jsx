@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import Form from './form/form'
-import PhoneTable from './phoneTable/phoneTable'
+import Form from "./form/form";
+import PhoneTable from "./phoneTable/phoneTable";
 
 const MainPage = () => {
-    return (
-        <div className='mainPage'>
-            <Form />
-            <PhoneTable />
-        </div>
-    )
-}
+  return (
+    <div className="mainPage">
+      <Form />
+      <PhoneTable />
+    </div>
+  );
+};
 
-export default MainPage
+export default MainPage;

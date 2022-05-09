@@ -34,10 +34,12 @@
 .columns{
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse  ;
 
     .phoneRow{
+        position: relative;
         display: flex;
+        align-items: center;
         width: 100%;
 
         div{
@@ -58,6 +60,12 @@
                 color: $blue;
             }
         }
+
+        &:hover{
+            .DeleteRowButton{
+                display: block;
+            }
+        }
     }
 }
 
@@ -68,4 +76,40 @@
     font-family: 'gilroy-regular';
     font-size: 1.4rem;
     color: $blue;
+}
+
+.DeleteRowButton{
+    position: absolute; 
+    display: none;
+    border: none;
+    border-radius: $radius;
+    box-shadow: $buttonLight-shadow, $buttonDark-shadow;
+    background-color: $blue;
+    height: 60%;
+    box-sizing: border-box;
+    right: 0.5vw;
+
+    span{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.deleteRowButton__head{
+    width: 1.2vw;
+}
+.deleteRowButton__body{
+    width: 1vw;
+}
+.DeleteRowButton:hover {
+    .deleteRowButton__head{
+        transform: translateY(-0.35vh) translateX(-0.25vh) rotate(-18deg);
+        transition-duration: 100ms;
+    }
 }

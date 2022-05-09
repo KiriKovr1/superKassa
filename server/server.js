@@ -14,14 +14,13 @@ const __dirname = process.cwd()
 const middleware = [
     cors(),
     cookieParser(),
-    express.json({limit: '50kb'}),
-    express.static(resolve(__dirname,'dist'))
+    express.json({ limit: '50kb' }),
+    express.static(resolve(__dirname, 'dist'))
 ]
 
 middleware.forEach((it) => server.use(it))
 
 server.use('/api', [countryCodeRouter, phonesRouter])
-
 
 server.get('/*', (req, res) => {
     const initialState = {

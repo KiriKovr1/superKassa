@@ -29,16 +29,13 @@ const CountryCodeSelection = () => {
   const dispatch = useDispatch();
   const codes = useSelector((s) => s.input);
 
-  
   if (!codes.data) {
-      dispatch(getCodes());
+    dispatch(getCodes());
   }
 
   return (
     <div className="countryCodeSelection">
-      <p className="countryCodeSelection__title">
-        {codes.serverError ? codes.errorBody.error : "выберете страну"}
-      </p>
+      <p className="countryCodeSelection__title">выберете страну</p>
       <div className="countryCodeSelection__diviver"></div>
       {codes.data ? (
         codes.data.map((countryCode, index) => {

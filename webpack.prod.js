@@ -1,7 +1,6 @@
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 import { merge } from 'webpack-merge'
-import fl from './'
 
 import common from './webpack.common.js'
 

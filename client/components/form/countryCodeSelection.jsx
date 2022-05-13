@@ -1,12 +1,12 @@
-import React, { useMemo } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
+
+import config from "../../../server/config";
 
 import {
-  getCodes,
   updateCountryCode,
   updateSelectionVisiability,
 } from "../../redux/reducer/input";
-import Loader from "../loader";
 
 const CountryCode = (props) => {
   const dispatch = useDispatch();
@@ -26,19 +26,11 @@ const CountryCode = (props) => {
 };
 
 const CountryCodeSelection = () => {
-  const dispatch = useDispatch();
-  const codes = useSelector((s) => s.input);
-
-  if (!codes.data) {
-    dispatch(getCodes());
-  }
-
   return (
     <div className="countryCodeSelection">
       <p className="countryCodeSelection__title">выберете страну</p>
-      <div className="countryCodeSelection__diviver"></div>
-      {codes.data ? (
-        codes.data.map((countryCode, index) => {
+      <div className="countryCodeSelection__diviver" />
+      {config.app.countryCodes.map((countryCode, index) => {
           return (
             <CountryCode
               country={countryCode.country}
@@ -47,9 +39,7 @@ const CountryCodeSelection = () => {
             />
           );
         })
-      ) : (
-        <Loader />
-      )}
+      }
     </div>
   );
 };

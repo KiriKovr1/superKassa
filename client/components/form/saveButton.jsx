@@ -1,23 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+
 import { postPhone } from "../../redux/reducer/table";
 import { resetInputValue } from "../../redux/reducer/input";
-
-const date = () => {
-  const now = new Date();
-  const currentDate = `${now.getDate()}.${now.getMonth() + 1}.${now.getFullYear()}`
-    .split(".")
-    .map((it) => {
-      if (it.length === 1) {
-        return "0" + it;
-      }
-      return it;
-    });
-  return currentDate.join(".");
-};
+import { getDate } from "../../config/form";
 
 const SaveButton = (props) => {
   const dispatch = useDispatch();
+  const phoneData = {
+    phone: props.phone,
+    date: getDate(),
+  };
   return (
     <button
       disabled={props.disabled}
@@ -25,7 +18,7 @@ const SaveButton = (props) => {
         props.disabled ? "input__SaveButton--disabled" : "input__SaveButton"
       }
       onClick={() => {
-        dispatch(postPhone({ phone: props.phone, date: date() }));
+        dispatch(postPhone(phoneData));
         dispatch(resetInputValue());
       }}
     >

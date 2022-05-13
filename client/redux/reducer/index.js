@@ -1,11 +1,13 @@
-import { combineReducers} from "redux";
+import { combineReducers } from "redux";
 import input from "./input.js";
-import table from "./table.js"
+import table from "./table.js";
+import connection from "./connection.js";
 
-const createRoorReducer = () => 
+const createRoorReducer = () =>
     combineReducers({
         input,
-        table
+        table,
+        connection
     })
 
 export default createRoorReducer

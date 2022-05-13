@@ -1,4 +1,3 @@
-import axios from "axios"
 
 const SET_CODES = 'SET_CODES'
 const UPDATE_COUNTRY_CODE = 'UPDATE_COUNTRY_CODE'
@@ -68,16 +67,6 @@ export default (state = initialState, action) => {
         }
         default:
             return state
-    }
-}
-
-export function getCodes() {
-    return (dispatch) => {
-        axios.get('/api/countryCodes')
-            .then(({data}) => {
-                dispatch({ type: SET_CODES, codes: data })
-            })
-            .catch(err => console.log(err))
     }
 }
 

@@ -17,7 +17,7 @@ const Phones = (props) => {
           return (
             <PhoneRow
               phone={it.phone}
-              date={it.adddate}
+              date={it.date}
               id ={it.id}
               key={`PhoneRow${index}`}
             />

@@ -1,9 +1,12 @@
 import axios from "axios"
+import {  WSpostPhone, WSdeletePhone } from "../../config/ws.js";
 
 const GET_PHONES = 'GET_PHONES'
 const POST_PHONES = 'POST_PHONES'
 const REMOVE_PHONE = 'REMOVE_PHONE'
 const SERVER_ERROR = 'SERVER_ERROR'
+const WS_POST_UPDATE = 'WS_POST_UPDATE'
+const WS_DELETE_UPDATE = 'WS_DELETE_UPDATE'
 
 const initialState = {
     loaded: false,
@@ -38,6 +41,18 @@ export default (state = initialState, action) => {
                 errorBody: action.errorBody
             }
         }
+        case WS_POST_UPDATE: {
+            return {
+                ...state,
+                phonesData: [...state.phonesData, action.data]
+            }
+        }
+        case WS_DELETE_UPDATE: {
+            return {
+                ...state,
+                phonesData: state.phonesData.filter(it => it.id !== action.data)
+            }
+        }
         default:
             return state
     }
@@ -63,6 +78,7 @@ export function postPhone(phoneData) {
                 if (data.isError) {
                     dispatch({ type: SERVER_ERROR, errorBody: data })
                 }
+                WSpostPhone(data)
                 dispatch({ type: POST_PHONES, phone: data })
             })
             .catch(err => console.log(err))
@@ -76,6 +92,7 @@ export function deletePhone(phoneId) {
                 if (data.isError) {
                     dispatch({ type: SERVER_ERROR, errorBody: data })
                 }
+                WSdeletePhone(phoneId)
                 dispatch({ type: REMOVE_PHONE, id: phoneId })
             })
     }

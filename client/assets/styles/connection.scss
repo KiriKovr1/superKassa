@@ -1,0 +1,55 @@
+.connectionBG{
+    margin: 0;
+    padding: 0.5vh;
+    position: absolute;
+    top: 8vh;
+    right: 5vw;
+    width: 15vw;
+    background-color: $lightBlue;
+    box-shadow: $drop-shadow;
+    box-sizing: border-box;
+    border-radius: $radius;
+}
+
+.connected{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: $radius;
+    border-color: rgb(49, 197, 148);
+    
+
+    h3 {
+        font-family: 'gilroy-medium';
+        color: rgb(66, 198, 154);
+    }
+}
+
+.disConnected{
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: $radius;
+    border-color: rgb(255, 110, 81);
+    
+
+    h3 {
+        margin: 0;
+        font-family: 'gilroy-medium';
+        color: rgb(255, 110, 81);
+    }
+
+    p {
+        margin: 0;
+        font-family: 'gilroy-regular';
+        font-size: 0.9rem;
+        text-align: center;
+        color: rgb(255, 110, 81);
+    }
+}

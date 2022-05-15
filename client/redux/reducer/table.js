@@ -5,8 +5,6 @@ const GET_PHONES = 'GET_PHONES'
 const POST_PHONES = 'POST_PHONES'
 const REMOVE_PHONE = 'REMOVE_PHONE'
 const SERVER_ERROR = 'SERVER_ERROR'
-const WS_POST_UPDATE = 'WS_POST_UPDATE'
-const WS_DELETE_UPDATE = 'WS_DELETE_UPDATE'
 
 const initialState = {
     loaded: false,
@@ -18,20 +16,20 @@ export default (state = initialState, action) => {
         case GET_PHONES: {
             return {
                 ...state,
-                phonesData: action.phones,
+                phonesData: action.data,
                 loaded: true
             }
         }
         case POST_PHONES: {
             return {
                 ...state,
-                phonesData: [...state.phonesData, action.phone]
+                phonesData: [...state.phonesData, action.data]
             }
         }
         case REMOVE_PHONE: {
             return {
                 ...state,
-                phonesData: state.phonesData.filter(it => it.id !== action.id)
+                phonesData: state.phonesData.filter(it => it.id !== action.data)
             }
         }
         case SERVER_ERROR: {
@@ -39,18 +37,6 @@ export default (state = initialState, action) => {
                 ...state,
                 serverError: true,
                 errorBody: action.errorBody
-            }
-        }
-        case WS_POST_UPDATE: {
-            return {
-                ...state,
-                phonesData: [...state.phonesData, action.data]
-            }
-        }
-        case WS_DELETE_UPDATE: {
-            return {
-                ...state,
-                phonesData: state.phonesData.filter(it => it.id !== action.data)
             }
         }
         default:
@@ -65,7 +51,7 @@ export function getPhones() {
                 if (data.isError) {
                     dispatch({ type: SERVER_ERROR, errorBody: data })
                 }
-                dispatch({ type: GET_PHONES, phones: data })
+                dispatch({ type: GET_PHONES, data })
             })
             .catch(err => console.log(err))
     }
@@ -79,7 +65,7 @@ export function postPhone(phoneData) {
                     dispatch({ type: SERVER_ERROR, errorBody: data })
                 }
                 WSpostPhone(data)
-                dispatch({ type: POST_PHONES, phone: data })
+                dispatch({ type: POST_PHONES, data})
             })
             .catch(err => console.log(err))
     }
@@ -93,7 +79,7 @@ export function deletePhone(phoneId) {
                     dispatch({ type: SERVER_ERROR, errorBody: data })
                 }
                 WSdeletePhone(phoneId)
-                dispatch({ type: REMOVE_PHONE, id: phoneId })
+                dispatch({ type: REMOVE_PHONE, data: phoneId })
             })
     }
 }
